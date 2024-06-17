@@ -27,18 +27,64 @@ for (let i = windowLength; i < arr.length; i++) {
 let minSum;
 let wSum = 0;
 
-for(let i = 0; i < windowLength; i++) {
+for (let i = 0; i < windowLength; i++) {
     wSum += arr[i];
 }
 
 minSum = wSum;
 
-for(let i = windowLength; i < arr.length; i++) {
-    wSum = wSum - arr[i-windowLength] + arr[i];
+for (let i = windowLength; i < arr.length; i++) {
+    wSum = wSum - arr[i - windowLength] + arr[i];
 
-    if(wSum < minSum) {
+    if (wSum < minSum) {
         minSum = wSum;
     }
 }
 
-console.log(minSum);
+// console.log(minSum);
+
+// max average sum
+let avgSum;
+let winSum = 0;
+let maxAvgSum;
+
+for (let i = 0; i < windowLength; i++) {
+    winSum += arr[i];
+}
+
+avgSum = winSum / windowLength;
+maxAvgSum = avgSum;
+
+for (let i = windowLength; i < arr.length; i++) {
+    winSum = winSum - arr[i - windowLength] + arr[i];
+
+    avgSum = winSum / windowLength;
+
+    if (avgSum > maxAvgSum) {
+        maxAvgSum = avgSum;
+    }
+}
+
+// console.log(maxAvgSum);
+
+// min average sum
+winSum = 0;
+let minAvgSum;
+
+for (let i = 0; i < windowLength; i++) {
+    winSum += arr[i];
+}
+
+avgSum = winSum / windowLength;
+minAvgSum = avgSum;
+
+for (let i = windowLength; i < arr.length; i++) {
+    winSum = winSum - arr[i - windowLength] + arr[i];
+    avgSum = winSum / windowLength;
+
+    if(avgSum < minAvgSum) {
+        minAvgSum = avgSum;
+    }
+}
+
+console.log(minAvgSum);
